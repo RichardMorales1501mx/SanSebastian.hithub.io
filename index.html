@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Formulario de Autenticación</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var usuarios = [
+            { usuario: 'usuario1@example.com', contraseña: 'contraseña1' },
+            { usuario: 'usuario2@example.com', contraseña: 'contraseña2' },
+            { usuario: 'usuario3@example.com', contraseña: 'contraseña3' },
+            { usuario: 'G', contraseña: 'G' },
+            { usuario: 'SALVADOR', contraseña: 'SALVADOR' },
+            { usuario: 'CARLOS', contraseña: 'CARLOS' },
+            { usuario: 'DIANA', contraseña: 'DIANA' },
+            { usuario: 'DANIEL', contraseña: 'DANIEL' },
+            { usuario: 'IZTEL', contraseña: 'IZTEL' },
+            { usuario: 'REBECA', contraseña: 'REBECA' },
+            { usuario: 'CLEMENTE', contraseña: 'CLEMENTE' },
+            { usuario: 'EDER', contraseña: 'EDER' },
+            { usuario: 'RENE', contraseña: 'RENE' },
+
+            // Agrega más cuentas de correo y contraseñas aquí
+        ];
+
+        function autenticar() {
+            var inputUsuario = document.getElementById('usuario').value;
+            var contraseña = document.getElementById('contraseña').value;
+
+            var autenticado = usuarios.some(function (user) {
+                return user.usuario === inputUsuario && user.contraseña === contraseña;
+            });
+
+            if (autenticado) {
+                // Redirige al usuario a la página del formulario de votación
+                window.location.href = 'https://forms.gle/TQnAF91VnUBgNejx9';
+            } else {
+                document.getElementById('usuario').value = '';
+                document.getElementById('contraseña').value = '';
+                alert('Los datos de autenticación no son válidos. Inténtalo de nuevo.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulario de Autenticación</h1>
+    <p>Ingresa tu correo electrónico y contraseña para autenticarte.</p>
+
+    <label for="Usuario">Usuario:</label>
+    <input type="text" id="usuario" required>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" required>
+
+    <button onclick="autenticar()">Autenticar</button>
+</body>
+</html>
